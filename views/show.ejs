@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= car.name %></title>
+</head>
+<body>
+    <a href="/cars">Back to Cars</a>
+    
+    <h1><%= car.name %></h1>
+
+    <ul>
+        <p><%= car.name %> is a <%= car.year %>, <%= car.color %>, <%= car.make %> <%= car.model %>.</p>
+        <% if (car.isPerfectforYOU) {  %>
+            <p>its great but its not perfect</p>
+        <%  } else {  %>
+            <p>it's just not great. it's perfect!!</p>
+        <%  }  %>
+    </ul>
+
+    <form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete this Car</button>
+    </form>
+    
+    <a href="/cars/<%= car.id %>/edit">
+        <button type="submit">Edit this Car</button>
+    </a>
+
+    <div>
+        <img src="<%= car.image %>"> alt=" <%= car.name%> ">
+    </div>
+    
+</body>
+</html>
