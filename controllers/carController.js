@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Car = require('../typeofcars/car.js');
+const Car = require('../models/car.js');
 
 module.exports = router;
 
@@ -8,16 +8,13 @@ module.exports = router;
 
 
 
-
-
 router.get('/cars', async (req, res) => {
     const allCars = await Car.find()
-    res.render('views/index.ejs', { cars: allCars })
+    res.render('cars/index.ejs', { cars: allCars })
 })
 
-
 router.get('/cars/new', (req, res) => {
-    res.render('views/new.ejs')
+    res.render('cars/new.ejs')
 })
 
 
@@ -29,22 +26,21 @@ router.delete('/cars/:carId', async (req, res) => {
 
 router.put('/cars/:carId', async (req, res) => {
     console.log(req.body)
-    if (req.body.isPerfectforYOU === 'on') {
-        req.body.isPerfectforYOU = true;
+    if (req.body.isGoodForKids === 'on') {
+        req.body.isGoodForKids = true;
     } else {
-        req.body.isPerfectforYOU = false;
+        req.body.isGoodForKids = false;
     }
     await Car.findByIdAndUpdate(req.params.carId, req.body)
     res.redirect(`/cars/${req.params.carId}`)
 })
 
-
 router.post('/cars', async (req, res) => {
     console.log(req.body)
-    if (req.body.isPerfectforYOU === 'on') {
-        req.body.isPerfectforYOU = true;
+    if (req.body.isGoodForKids === 'on') {
+        req.body.isGoodForKids = true;
     } else {
-        req.body.isPerfectforYOU = false;
+        req.body.isGoodForKids = false;
     }
 
     try {

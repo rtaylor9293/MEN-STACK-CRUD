@@ -12,10 +12,10 @@
 
     <ul>
         <p><%= car.name %> is a <%= car.year %>, <%= car.color %>, <%= car.make %> <%= car.model %>.</p>
-        <% if (car.isPerfectforYOU) {  %>
-            <p>its great but its not perfect</p>
+        <% if (car.isGoodForKids) {  %>
+            <p>She is good for kids. Less good for your dating life.</p>
         <%  } else {  %>
-            <p>it's just not great. it's perfect!!</p>
+            <p>She is not so good for kids.  Way good for your dating life.</p>
         <%  }  %>
     </ul>
 
